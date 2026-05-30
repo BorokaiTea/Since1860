@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borokai | Premium Single-Estate Organic Assam Tea</title>
+    <meta name="description" content="Borokai — a pristine single-estate organic Assam tea, hand-plucked in Dwarbond since 1860. Zero chemicals. Slow craft. Quiet luxury.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #0d1f14;
+            --color-primary-mid: #11261a;
+            --color-accent: #c9a84c;
+            --color-accent-light: #e8c97a;
+            --color-bg: #faf9f7;
+            --color-bg-warm: #f4f0ea;
+            --color-text: #1e2a22;
+            --color-text-muted: #6b7368;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-display: 'Cinzel', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition-fast: all 0.35s ease;
+            --shadow-soft: 0 20px 60px rgba(13, 31, 20, 0.06);
+            --shadow-medium: 0 30px 70px rgba(13, 31, 20, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+        }
+
+        a { color: inherit; text-decoration: none; transition: var(--transition); }
+
+        img { max-width: 100%; height: auto; display: block; object-fit: cover; }
+
+        /* ——— Layout ——— */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+        .section-padding { padding: 9rem 0; }
+
+        .line-dec {
+            width: 50px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            margin: 2rem auto;
+        }
+
+        .eyebrow {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ——— Scrollbar ——— */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--color-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 2px; }
+
+        /* ——— Header ——— */
+        header {
+            position: fixed; top: 0; width: 100%;
+            background-color: rgba(250, 249, 247, 0.96);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(13, 31, 20, 0.06);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2.5rem;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .logo a { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
+
+        .logo h1 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+        }
+
+        .logo span {
+            font-family: var(--font-sans);
+            font-size: 0.58rem;
+            letter-spacing: 0.35em;
+            color: var(--color-text-muted);
+        }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+
+        nav ul a {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-weight: 400;
+            color: var(--color-text);
+            position: relative;
+            padding-bottom: 0.2rem;
+        }
+
+        nav ul a::after {
+            content: '';
+            position: absolute; bottom: 0; left: 50%;
+            width: 0; height: 1px;
+            background-color: var(--color-accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav ul a:hover::after,
+        nav ul a.active::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: #fff !important;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.7rem !important;
+            letter-spacing: 0.2em !important;
+            border: 1px solid var(--color-primary);
+            transition: var(--transition) !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--color-accent) !important; border-color: var(--color-accent) !important; }
+
+        /* ——— SPA Router ——— */
+        .page {
+            display: none; opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            padding-top: 80px;
+        }
+        .page.active-page { display: block; opacity: 1; transform: translateY(0); }
+
+        /* ——— Hero Slideshow ——— */
+        .hero {
+            height: 100vh; min-height: 700px;
+            position: relative;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: #fff;
+            overflow: hidden;
+        }
+
+        .hero-slides { position: absolute; inset: 0; z-index: 1; }
+
+        .hero-slide {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+        }
+        .hero-slide.active { opacity: 1; }
+
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(13, 31, 20, 0.35) 0%,
+                rgba(13, 31, 20, 0.55) 50%,
+                rgba(13, 31, 20, 0.75) 100%
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative; z-index: 3;
+            max-width: 900px; padding: 0 2rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--color-accent-light);
+            margin-bottom: 1.5rem;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            letter-spacing: 0.2em;
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .hero-scroll {
+            position: absolute; bottom: 3rem; left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+        }
+
+        .hero-scroll span {
+            font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .scroll-line {
+            width: 1px; height: 50px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        /* ——— Manifesto Banner ——— */
+        .manifesto {
+            background-color: var(--color-primary);
+            color: #fff; text-align: center;
+            padding: 7rem 2rem;
+            position: relative; overflow: hidden;
+        }
+
+        .manifesto::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+        }
+
+        .manifesto-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.6rem);
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+            font-style: italic;
+            font-weight: 300;
+            position: relative; z-index: 1;
+        }
+
+        .manifesto-attr {
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-accent-light);
+            position: relative; z-index: 1;
+        }
+
+        /* ——— Pillars ——— */
+        .pillars-header {
+            text-align: center; margin-bottom: 4rem;
+        }
+
+        .pillars-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--color-primary);
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid rgba(13, 31, 20, 0.06);
+        }
+
+        .pillar-card {
+            text-align: center;
+            border-right: 1px solid rgba(13, 31, 20, 0.06);
+            background: #fff;
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .pillar-card:last-child { border-right: none; }
+
+        .pillar-card:hover { background: var(--color-bg); }
+
+        .pillar-image-wrap {
+            width: 100%; height: 220px; overflow: hidden;
+        }
+
+        .pillar-image-wrap img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .pillar-card:hover .pillar-image-wrap img { transform: scale(1.07); }
+
+        .pillar-card-body { padding: 2rem 1.5rem 2.5rem; flex: 1; }
+
+        .pillar-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-accent);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+            color: var(--color-primary);
+        }
+
+        .pillar-card p {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        /* ——— Reviews Carousel ——— */
+        .reviews-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1a3d27 100%);
+            padding: 9rem 0;
+            text-align: center;
+            color: #fff;
+            position: relative; overflow: hidden;
+        }
+
+        .reviews-section::before {
+            content: '"';
+            font-family: var(--font-serif);
+            font-size: 20rem;
+            position: absolute;
+            top: -2rem; left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.03;
+            line-height: 1;
+            color: #fff;
+        }
+
+        .reviews-track-container { position: relative; min-height: 250px; }
+
+        .reviews-track { list-style: none; }
+
+        .review-slide {
+            position: absolute; top: 0; left: 0; width: 100%;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.9s ease;
+            display: flex; flex-direction: column;
+            align-items: center; padding: 0 2rem;
+        }
+
+        .review-slide.active { opacity: 1; pointer-events: auto; position: relative; }
+
+        .review-stars {
+            color: var(--color-accent);
+            font-size: 1rem;
+            letter-spacing: 0.4em;
+            margin-bottom: 2rem;
+        }
+
+        .review-text {
+            font-family: var(--font-serif);
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-style: italic;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.95);
+            max-width: 750px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .review-author {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-accent-light);
+            opacity: 0.85;
+        }
+
+        .reviews-nav {
+            display: flex; align-items: center;
+            justify-content: center; gap: 2rem;
+            margin-top: 3.5rem;
+        }
+
+        .reviews-btn {
+            background: none; border: none;
+            color: rgba(255,255,255,0.5);
+            cursor: pointer; padding: 0.5rem;
+            transition: var(--transition);
+        }
+        .reviews-btn:hover { color: var(--color-accent); }
+
+        .reviews-dots { display: flex; gap: 0.6rem; }
+
+        .review-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            cursor: pointer; transition: var(--transition);
+        }
+        .review-dot.active {
+            background: var(--color-accent);
+            transform: scale(1.5);
+        }
+
+        /* ——— Split Layout ——— */
+        .split-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 7rem;
+            margin-bottom: 9rem;
+        }
+
+        .craft-journey .split-row:nth-child(even) { direction: rtl; }
+        .craft-journey .split-row:nth-child(even) .split-text { direction: ltr; }
+
+        .split-text h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .split-text p {
+            color: var(--color-text-muted);
+            line-height: 1.85;
+            font-size: 0.95rem;
+        }
+
+        .split-image {
+            position: relative; overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .split-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(201,168,76,0.15);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .split-image img {
+            width: 100%; height: 580px;
+            transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .split-image:hover img { transform: scale(1.04); }
+
+        /* ——— Products ——— */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid rgba(13, 31, 20, 0.04);
+            text-align: center;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .product-card-image {
+            height: 380px; overflow: hidden;
+        }
+
+        .product-card-image img {
+            width: 100%; height: 100%;
+            transition: transform 0.9s ease;
+        }
+
+        .product-card:hover .product-card-image img { transform: scale(1.05); }
+
+        .product-card-body { padding: 2rem 1.5rem 2.5rem; }
+
+        .product-meta {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+
+        .product-card p {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-price {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 0.7rem 1.8rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        /* ——— Gallery ——— */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 380px 300px 380px 300px 380px 300px 380px 300px 380px 300px;
+            gap: 1rem;
+        }
+
+        .gallery-item { position: relative; overflow: hidden; }
+
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.9s ease;
+        }
+
+        .gallery-item:hover img { transform: scale(1.06); }
+
+        .gi-1 { grid-column: 1 / 6; grid-row: 1; }
+        .gi-2 { grid-column: 6 / 9; grid-row: 1; }
+        .gi-3 { grid-column: 9 / 13; grid-row: 1; }
+        .gi-4 { grid-column: 1 / 4; grid-row: 2; }
+        .gi-5 { grid-column: 4 / 8; grid-row: 2; }
+        .gi-6 { grid-column: 8 / 11; grid-row: 2; }
+        .gi-7 { grid-column: 11 / 13; grid-row: 2; }
+        .gi-8 { grid-column: 1 / 6; grid-row: 3; }
+        .gi-9 { grid-column: 6 / 9; grid-row: 3; }
+        .gi-10 { grid-column: 9 / 13; grid-row: 3; }
+        .gi-11 { grid-column: 1 / 4; grid-row: 4; }
+        .gi-12 { grid-column: 4 / 8; grid-row: 4; }
+        .gi-13 { grid-column: 8 / 11; grid-row: 4; }
+        .gi-14 { grid-column: 11 / 13; grid-row: 4; }
+        .gi-15 { grid-column: 1 / 6; grid-row: 5; }
+        .gi-16 { grid-column: 6 / 9; grid-row: 5; }
+        .gi-17 { grid-column: 9 / 13; grid-row: 5; }
+        .gi-18 { grid-column: 1 / 4; grid-row: 6; }
+        .gi-19 { grid-column: 4 / 8; grid-row: 6; }
+        .gi-20 { grid-column: 8 / 11; grid-row: 6; }
+        .gi-21 { grid-column: 11 / 13; grid-row: 6; }
+        .gi-22 { grid-column: 1 / 6; grid-row: 7; }
+        .gi-23 { grid-column: 6 / 9; grid-row: 7; }
+        .gi-24 { grid-column: 9 / 13; grid-row: 7; }
+        .gi-25 { grid-column: 1 / 4; grid-row: 8; }
+        .gi-26 { grid-column: 4 / 8; grid-row: 8; }
+        .gi-27 { grid-column: 8 / 11; grid-row: 8; }
+        .gi-28 { grid-column: 11 / 13; grid-row: 8; }
+        .gi-29 { grid-column: 1 / 6; grid-row: 9; }
+        .gi-30 { grid-column: 6 / 9; grid-row: 9; }
+        .gi-31 { grid-column: 9 / 13; grid-row: 9; }
+        .gi-32 { grid-column: 1 / 4; grid-row: 10; }
+        .gi-33 { grid-column: 4 / 8; grid-row: 10; }
+        .gi-34 { grid-column: 8 / 11; grid-row: 10; }
+
+        /* ——— Profile Cards (Spiritual) ——— */
+        .profile-section {
+            margin-top: 9rem;
+            padding-top: 7rem;
+            border-top: 1px solid rgba(13, 31, 20, 0.05);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .profile-card {
+            background: #fff;
+            border: 1px solid rgba(13, 31, 20, 0.05);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .profile-avatar {
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid rgba(201,168,76,0.4);
+            margin: 0 auto 2rem;
+            box-shadow: 0 0 0 8px rgba(201,168,76,0.06);
+        }
+
+        .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .profile-card h3 {
+            font-size: 1.9rem;
+            color: var(--color-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .profile-role {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-card p {
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        /* ——— Team Grid ——— */
+        .team-section {
+            background: var(--color-bg-warm);
+            padding: 9rem 0;
+            margin-top: 9rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .team-card {
+            background: #fff;
+            border: 1px solid rgba(13, 31, 20, 0.04);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .team-avatar {
+            width: 130px; height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid rgba(201,168,76,0.35);
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 0 6px rgba(201,168,76,0.05);
+        }
+
+        .team-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .team-card h3 {
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .team-card p {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            line-height: 1.65;
+        }
+
+        /* ——— Stats Bar ——— */
+        .stats-bar {
+            background: var(--color-primary);
+            padding: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item { color: #fff; }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            color: var(--color-accent);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ——— FAQs ——— */
+        .faq-categories { max-width: 820px; margin: 0 auto; }
+
+        .faq-cat-title {
+            font-size: 0.75rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(13,31,20,0.07);
+            padding-bottom: 0.75rem;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(13, 31, 20, 0.07);
+            padding: 1.5rem 0;
+        }
+
+        .accordion-trigger {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .accordion-trigger:hover { color: var(--color-accent); }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            flex-shrink: 0;
+            transition: var(--transition-fast);
+        }
+
+        .accordion-content {
+            padding-top: 1rem;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            display: none;
+        }
+
+        /* ——— Forms ——— */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+        }
+
+        .contact-details h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .info-block { margin-bottom: 2.5rem; }
+
+        .info-block span {
+            display: block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .info-block p {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+        }
+
+        .luxury-form { display: flex; flex-direction: column; gap: 2rem; }
+
+        .form-group { display: flex; flex-direction: column; }
+
+        .form-group label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: transparent; border: none;
+            border-bottom: 1px solid rgba(13, 31, 20, 0.18);
+            padding: 0.75rem 0;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--color-text);
+            transition: var(--transition);
+            outline: none;
+            appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1L5 5L9 1' stroke='%232c3531' stroke-width='1.5' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: var(--color-primary); color: #fff; border: none;
+            padding: 1.1rem 2.8rem;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover { background: var(--color-accent); }
+
+        /* ——— Footer ——— */
+        footer {
+            background: #090f0b;
+            color: rgba(255,255,255,0.6);
+            padding: 7rem 0 3rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 0.82rem;
+            max-width: 280px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h5 {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .footer-links a:hover { color: var(--color-accent-light); }
+
+        .social-icons { display: flex; gap: 1.2rem; }
+
+        .social-icons a {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.12);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.45);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding-top: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-seal {
+            display: flex;
+            align-items: center; gap: 0.75rem;
+            color: var(--color-accent);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+        }
+
+        /* ——— Process Steps ——— */
+        .process-step-number {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--color-accent);
+            opacity: 0.15;
+            line-height: 1;
+            margin-bottom: -1rem;
+            display: block;
+        }
+
+        /* ——— Luxury Divider ——— */
+        .luxury-divider {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .luxury-divider::before,
+        .luxury-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3));
+        }
+        .luxury-divider::after {
+            background: linear-gradient(90deg, rgba(201,168,76,0.3), transparent);
+        }
+        .luxury-divider-icon { color: var(--color-accent); font-size: 0.8rem; letter-spacing: 0.15em; white-space: nowrap; }
+
+        /* ——— Page Intros ——— */
+        .page-intro {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(180deg, rgba(13,31,20,0.02) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(13, 31, 20, 0.04);
+            margin-bottom: 5rem;
+        }
+        .page-intro h2 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--color-primary); }
+        .page-intro p {
+            max-width: 600px; margin: 1.5rem auto 0;
+            color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.8;
+        }
+
+        /* ——— Responsive ——— */
+        @media (max-width: 1100px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 968px) {
+            .split-row,
+            .product-grid,
+            .contact-wrapper,
+            .footer-grid,
+            .profile-grid,
+            .stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 3rem;
+                direction: ltr !important;
+            }
+            .pillars { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .gi-1, .gi-2, .gi-3, .gi-4, .gi-5, .gi-6, .gi-7,
+            .gi-8, .gi-9, .gi-10, .gi-11, .gi-12, .gi-13, .gi-14, .gi-15, .gi-16, .gi-17,
+            .gi-18, .gi-19, .gi-20, .gi-21, .gi-22, .gi-23, .gi-24, .gi-25, .gi-26, .gi-27,
+            .gi-28, .gi-29, .gi-30, .gi-31, .gi-32, .gi-33, .gi-34 {
+                grid-column: auto; grid-row: auto;
+                height: 250px;
+            }
+            .nav-container { flex-direction: column; gap: 1rem; padding: 1rem; }
+            nav ul { gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+            .nav-cta { display: none; }
+            .hero-title { font-size: 3rem; }
+            .craft-journey .split-row:nth-child(even) { direction: ltr; }
+        }
+
+        @media (max-width: 600px) {
+            .pillars { grid-template-columns: 1fr 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.5rem; }
+        }
+
+        /* ——— Timeline ——— */
+        .timeline-container {
+            max-width: 900px; margin: 0 auto 9rem; position: relative; padding: 2rem 0;
+        }
+        .timeline-line {
+            position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(201,168,76,0.25); transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5rem; position: relative;
+        }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-content { width: 42%; text-align: right; padding-right: 2rem; }
+        .timeline-item:nth-child(even) .timeline-content { text-align: left; padding-left: 2rem; padding-right: 0; }
+        .timeline-badge {
+            width: 12px; height: 12px; border-radius: 50%; background: var(--color-accent); border: 3px solid var(--color-bg); position: absolute; left: 50%; top: 1.5rem; transform: translateX(-50%); z-index: 2;
+        }
+        .timeline-empty { width: 42%; }
+
+        @media (max-width: 768px) {
+            .timeline-line { left: 15px; transform: none; }
+            .timeline-item { flex-direction: column !important; margin-bottom: 4rem; padding-left: 45px; }
+            .timeline-content { width: 100% !important; text-align: left !important; padding: 0 !important; }
+            .timeline-badge { left: 15px; transform: translateX(-50%); }
+            .timeline-empty { display: none; }
+        }
+
+        .footer-email-link {
+            transition: var(--transition-fast);
+        }
+        .footer-email-link:hover {
+            color: var(--color-accent) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#" onclick="navigateTo('home')" style="display: flex; align-items: center; gap: 0.75rem; flex-direction: row; text-align: left;">
+                    <svg class="logo-leaf" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" width="32" height="32" style="flex-shrink: 0;">
+                        <path d="M2 22C2 22 8 20 12 16C16 12 22 2 22 2C22 2 12 8 8 12C4 16 2 22 2 22Z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 22L14 10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div style="display: flex; flex-direction: column;">
+                        <h1 style="line-height: 1; font-size: 1.6rem; font-family: var(--font-display); letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-primary);">Borokai</h1>
+                        <span style="line-height: 1; margin-top: 0.25rem; font-family: var(--font-sans); font-size: 0.58rem; letter-spacing: 0.35em; color: var(--color-text-muted);">Assam Tea · Est. 1860</span>
+                    </div>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" onclick="navigateTo('home')">Home</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('about')">About</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('history')">History</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('process')">The Craft</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('products')">Collections</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('gallery')">Gallery</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('team')">Team</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('faq')">FAQs</a></li>
+                    <li><a href="#" class="nav-link" onclick="navigateTo('contact')">Contact</a></li>
+                    <li><a href="#" class="nav-link nav-cta" onclick="navigateTo('free-sample')">Free Sample</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===================== PAGE: HOME ===================== -->
+    <div id="home" class="page active-page">
+
+        <!-- Hero Slideshow -->
+        <section class="hero">
+            <div class="hero-slides">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=85&w=2000');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=85&w=2000');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&q=85&w=2000');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1505275350441-83dcda8eeef5?auto=format&fit=crop&q=85&w=2000');"></div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="hero-eyebrow">Single Estate · Dwarbond, Assam</span>
+                <h2 class="hero-title">Borokai</h2>
+                <p class="hero-subtitle">Borokai Tea Since 1860</p>
+            </div>
+            <div class="hero-scroll">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- Manifesto -->
+        <section class="manifesto">
+            <p class="manifesto-quote">"We protect Assam's sacred land, nurturing each leaf the old way. Small harvests. Deep flavor. Zero shortcuts. A living inheritance."</p>
+            <div class="line-dec"></div>
+            <span class="manifesto-attr">Rajen Sudan · Keeper of Borokai</span>
+        </section>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">1860</span>
+                        <span class="stat-label">Year Established</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Generations of Heritage</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0%</span>
+                        <span class="stat-label">Chemicals Used</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Hand-Plucked Leaves</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillars -->
+        <section class="container section-padding">
+            <div class="pillars-header">
+                <span class="eyebrow">Our Commitments</span>
+                <h2>Four Unbreakable Pillars</h2>
+                <div class="line-dec"></div>
+            </div>
+
+            <div class="pillars">
+                <div class="pillar-card">
+                    <div class="pillar-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=80&w=700" alt="Single Estate Tea Garden">
+                    </div>
+                    <div class="pillar-card-body">
+                        <span class="pillar-icon">◈</span>
+                        <h3>Single Estate</h3>
+                        <p>Never blended. Sourced entirely from the historic, iron-rich soils of Borokai, Dwarbond — one garden, one terroir, one truth.</p>
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=700" alt="Hand Plucking Tea">
+                    </div>
+                    <div class="pillar-card-body">
+                        <span class="pillar-icon">◈</span>
+                        <h3>Hand Plucked</h3>
+                        <p>Only the finest two leaves and a bud, selected at dawn by master pluckers whose hands have known this garden for generations.</p>
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=700" alt="Zero Chemicals Natural Forest">
+                    </div>
+                    <div class="pillar-card-body">
+                        <span class="pillar-icon">◈</span>
+                        <h3>0% Chemicals</h3>
+                        <p>Certified organic for over a century. Grown in absolute harmony with the surrounding forest ecosystem of the Brahmaputra valley.</p>
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=700" alt="Slow Craft Tea Processing">
+                    </div>
+                    <div class="pillar-card-body">
+                        <span class="pillar-icon">◈</span>
+                        <h3>Slow Craft</h3>
+                        <p>Processed through time-honored, unhurried techniques that protect the natural enzymes and preserve our signature golden notes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Carousel -->
+        <section class="reviews-section">
+            <div class="container">
+                <span class="eyebrow" style="color: var(--color-accent-light);">Client Appraisals</span>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-bottom: 4rem;">Five-Star Impressions</h2>
+
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="reviews-track-container">
+                        <ul class="reviews-track">
+                            <li class="review-slide active">
+                                <div class="review-stars">★ ★ ★ ★ ★</div>
+                                <blockquote class="review-text">"The Assamese Tea - Second Flush has a depth of flavor that is truly ancestral. It has become an essential anchor of my morning — pure, bold, and profoundly clean."</blockquote>
+                                <cite class="review-author">Arthur K. &nbsp;·&nbsp; Munich, Germany</cite>
+                            </li>
+                            <li class="review-slide">
+                                <div class="review-stars">★ ★ ★ ★ ★</div>
+                                <blockquote class="review-text">"You can taste the morning mist of the Dwarbond valley in every single infusion. There is no other tea that drinks like this — unblended, unrushed, extraordinary."</blockquote>
+                                <cite class="review-author">Clara S. &nbsp;·&nbsp; Tokyo, Japan</cite>
+                            </li>
+                            <li class="review-slide">
+                                <div class="review-stars">★ ★ ★ ★ ★</div>
+                                <blockquote class="review-text">"Borokai has redefined what I thought Assam tea could be. Clean, smooth, and extraordinarily complex. The golden tips shimmer in the cup."</blockquote>
+                                <cite class="review-author">Julian V. &nbsp;·&nbsp; London, UK</cite>
+                            </li>
+                            <li class="review-slide">
+                                <div class="review-stars">★ ★ ★ ★ ★</div>
+                                <blockquote class="review-text">"The Assamese Tea - First Flush is a work of monastic art. No chemical harshness — just the clean, vibrating energy of living native soil."</blockquote>
+                                <cite class="review-author">Sophia M. &nbsp;·&nbsp; San Francisco, USA</cite>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="reviews-nav">
+                        <button class="reviews-btn prev-btn" aria-label="Previous review">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
+                        <div class="reviews-dots">
+                            <span class="review-dot active" onclick="currentReview(0)"></span>
+                            <span class="review-dot" onclick="currentReview(1)"></span>
+                            <span class="review-dot" onclick="currentReview(2)"></span>
+                            <span class="review-dot" onclick="currentReview(3)"></span>
+                        </div>
+                        <button class="reviews-btn next-btn" aria-label="Next review">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Collection Tease -->
+        <section class="container section-padding">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="eyebrow">Reserve Allocations</span>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); color: var(--color-primary);">The Collections</h2>
+                <div class="line-dec"></div>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&q=80&w=800" alt="Borokai CTC Cut Tear Curl Tea">
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-meta">Classic Robust Blend · Estate Fresh</span>
+                        <h3>CTC Cut Tear Curl Tea</h3>
+                        <p>Our CTC (Cut, Tear, Curl) tea is exceptionally bold, strong, and highly malty. Crafted for the ultimate traditional milk chai.</p>
+                        <a href="#" onclick="navigateTo('products')" class="btn-outline">Discover</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=800" alt="Assamese Tea - First Flush">
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-meta">Spring Harvest · Elegant & Light</span>
+                        <h3>Assamese Tea - First Flush</h3>
+                        <p>Harvested at the peak of spring. Offers light, tender leaves yielding a delicate golden cup with exquisite honeyed and floral notes.</p>
+                        <a href="#" onclick="navigateTo('products')" class="btn-outline">Discover</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=800" alt="Assamese Tea - Second Flush">
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-meta">Summer Flush · Famous Malty Character</span>
+                        <h3>Assamese Tea - Second Flush</h3>
+                        <p>The iconic Assam tea. Full-bodied, rich, and naturally sweet with a prominent baked-malt profile and high concentration of golden tips.</p>
+                        <a href="#" onclick="navigateTo('products')" class="btn-outline">Discover</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- end #home -->
+
+    <!-- ===================== PAGE: ABOUT ===================== -->
+    <div id="about" class="page">
+
+        <div class="page-intro container">
+            <span class="eyebrow">Our Guardianship</span>
+            <h2>Stewards of Sacred Ground</h2>
+            <p>Borokai stands as a pristine haven in Dwarbond, Assam. We do not merely cultivate tea — we preserve a living biological inheritance.</p>
+        </div>
+
+        <section class="container">
+            <div class="split-row">
+                <div class="split-text">
+                    <span class="eyebrow">The Estate</span>
+                    <h2>A Garden That Breathes</h2>
+                    <p>Borokai's tea garden thrives on minimalist intervention. The intense local monsoon climate, the deep alluvial silt carried from the Brahmaputra, and the shade of ancient forest trees dictate the character of every leaf — not chemical intervention or industrial machinery.</p>
+                    <br>
+                    <p>Our garden is a habitat. Wild animals move through it freely. Bees pollinate without disturbance. The soil is a living culture nurtured by over a century of forest composting. This is not farming — it is stewardship.</p>
+                </div>
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&q=80&w=1000" alt="Lush Borokai Tea Fields">
+                </div>
+            </div>
+
+            <div class="split-row">
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=1000" alt="Serene Tea Ceremony">
+                </div>
+                <div class="split-text">
+                    <span class="eyebrow">Quiet Luxury</span>
+                    <h2>A Monastic Peace in Every Sip</h2>
+                    <p>Inspired by the meditative traditions of the Brahmaputra valley, our production ethos is one of deliberate restraint. We believe true luxury is not abundance — it is the absence of compromise. By keeping our yields intentionally small, we guarantee that every canister leaving this estate carries a profound depth of flavor that mass production can never replicate.</p>
+                    <br>
+                    <p>Pour Borokai slowly. Breathe deeply. This tea asks for stillness.</p>
+                </div>
+            </div>
+            <!-- Roots in 1860 -->
+            <div class="split-row">
+                <div class="split-text">
+                    <span class="eyebrow">A Living Inheritance</span>
+                    <h2>Same Roots Planted in 1860</h2>
+                    <p>Every single leaf harvested at Borokai comes from the exact same ancient plants that were first planted in these terraces in 1860. Unlike modern tea estates that constantly uproot and replant with high-yielding cloned cultivars, we preserve our heritage plants. Their roots run exceptionally deep into the nutrient-dense iron-rich Assam clay, drawing complex characters and carrying a living biological memory that is more than 165 years old.</p>
+                </div>
+                <div class="split-image">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.13.jpeg" alt="Original Heritage 1860 Tea Plants">
+                </div>
+            </div>
+
+            <!-- Wild Sanctuary -->
+            <div class="split-row">
+                <div class="split-image" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: none; box-shadow: none;">
+                    <img src="fireflies.jpg" alt="Fireflies Sanctuary" style="height: 100%; width: 100%; object-fit: cover;">
+                    <img src="butterflies.jpg" alt="Rare Butterflies Sanctuary" style="height: 100%; width: 100%; object-fit: cover;">
+                </div>
+                <div class="split-text">
+                    <span class="eyebrow">Natural Biodiversity</span>
+                    <h2>Sanctuary of Jugnus &amp; Rare Butterflies</h2>
+                    <p>Our commitment to 0% chemical intervention has turned Borokai into an ecological sanctuary. When night falls, our estate is illuminated by thousands of <em>jugnus</em> (fireflies) — a magical sight now sadly lost to the rest of India due to pesticide usage and light pollution. During the day, rare butterflies flock to the garden, sensitive creatures that only thrive in places of absolute chemical purity.</p>
+                </div>
+            </div>
+
+            <!-- Lab Cleanliness -->
+            <div class="split-row">
+                <div class="split-text">
+                    <span class="eyebrow">Purity Tested</span>
+                    <h2>Laboratory-Pure Organic Cleanliness</h2>
+                    <p>When we say organic, we mean absolute purity. Every harvest is tested to ensure zero chemical residue, heavy metals, or toxic additives. We nourish our soil with natural forest compost and local river sediment, creating a closed-loop system of absolute cleanliness. This is tea in its most pristine form — honest, purifying, and chemical-free.</p>
+                </div>
+                <div class="split-image">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.16.jpeg" alt="Lab Tested Clean Organic Tea">
+                </div>
+            </div>
+
+            <!-- Free-Roaming Horses -->
+            <div class="split-row">
+                <div class="split-image">
+                    <img src="horse.jpg" alt="Free Roaming Horses on the Estate">
+                </div>
+                <div class="split-text">
+                    <span class="eyebrow">Tranquil Coexistence</span>
+                    <h2>The Free-Roaming Horses of Borokai</h2>
+                    <p>A walk through our estate reveals another unique aspect of Borokai's living sanctuary: our free-roaming horses. These beautiful, gentle creatures graze peacefully among the tea terraces, their presence a living testament to the undisturbed serenity of the estate. Here, nature, wildlife, and slow human craft exist in complete, quiet harmony.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </div><!-- end #about -->
+
+    <!-- ===================== PAGE: HISTORY ===================== -->
+    <div id="history" class="page">
+        <div class="page-intro container">
+            <span class="eyebrow">Our Legacy</span>
+            <h2>Our History</h2>
+            <p>Borokai's journey began in 1860. Across generations, our estate has stood as a sanctuary of pure Assam tea craftsmanship and unhurried stewardship.</p>
+        </div>
+
+        <section class="container">
+            <!-- Timeline Section -->
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- Timeline Item 1 (1860) -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span style="font-family: var(--font-display); font-size: 2.2rem; color: var(--color-accent); display: block; margin-bottom: 0.5rem;">1860</span>
+                        <h3 style="font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.75rem;">The Planting</h3>
+                        <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7;">The first Camellia sinensis var. assamica saplings are planted in the virgin forest soils of Dwarbond, establishing Borokai as a premium estate.</p>
+                    </div>
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- Timeline Item 2 (1920) -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span style="font-family: var(--font-display); font-size: 2.2rem; color: var(--color-accent); display: block; margin-bottom: 0.5rem;">1920</span>
+                        <h3 style="font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.75rem;">The Organic Oath</h3>
+                        <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7;">Amid the rise of industrial farming, the custodians of Borokai take a sacred pledge to maintain 0% chemical usage, preserving the estate's pure soils.</p>
+                    </div>
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- Timeline Item 3 (1980) -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span style="font-family: var(--font-display); font-size: 2.2rem; color: var(--color-accent); display: block; margin-bottom: 0.5rem;">1980</span>
+                        <h3 style="font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.75rem;">Slow Craft Perfected</h3>
+                        <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7;">Our signature slow oxidation and low-temperature firing methods are formalized, ensuring the delicate golden tips and honeyed character remain unchanged.</p>
+                    </div>
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- Timeline Item 4 (Present) -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span style="font-family: var(--font-display); font-size: 2.2rem; color: var(--color-accent); display: block; margin-bottom: 0.5rem;">Present</span>
+                        <h3 style="font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.75rem;">A Living Sanctuary</h3>
+                        <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7;">Under the guidance of Rajen Sudan, Borokai stands as one of the last remaining gardens in India of pure heritage roots, a home to rare biodiversity.</p>
+                    </div>
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-empty"></div>
+                </div>
+            </div>
+
+            <!-- Spiritual Guardians -->
+            <div class="profile-section">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <span class="eyebrow">Estate Stewardship</span>
+                    <h2 style="font-size: clamp(2rem, 4vw, 3rem); color: var(--color-primary);">Custodians of Borokai</h2>
+                    <div class="line-dec"></div>
+                    <p style="color: var(--color-text-muted); max-width: 560px; margin: 0 auto; font-size: 0.9rem; line-height: 1.8;">The estate's legacy is guided by profound love, compassion, and a radiant spirit of devotion.</p>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.18.jpeg" alt="Rajen Sudan">
+                        </div>
+                        <h3>Rajen Sudan</h3>
+                        <span class="profile-role">The Devoted Custodian</span>
+                        <p>Rajen Sudan has spent his life guiding the estate with a philosophy of deep empathy and compassion. From rehabilitating orphaned leopards to protecting the rich forest ecosystem, his devotion ensures that Borokai remains a sanctuary of peace. His care for the land is the very soul of our tea.</p>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="tarana%20singh.jpg" alt="Tarana Singh">
+                        </div>
+                        <h3>Tarana Singh</h3>
+                        <span class="profile-role">The Elegant Spirit</span>
+                        <p>Tarana Singh brought an extraordinary spirit of grace, warmth, and devotion to Borokai. Her life was an emblem of unconditional love and pure intent, shaping our pursuit of absolute quality. Her radiant legacy continues to inspire the unhurried precision and care that defines every single cup.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div><!-- end #history -->
+
+    <!-- ===================== PAGE: THE CRAFT ===================== -->
+    <div id="process" class="page">
+
+        <div class="page-intro container">
+            <span class="eyebrow">The Seed to Packaging Journey</span>
+            <h2>The Craft of Patience</h2>
+            <p>From ancestral Assamica seeds in native soil to the wax-sealed canister on your shelf — eight stages of unhurried devotion.</p>
+        </div>
+
+        <section class="container">
+            <div class="craft-journey">
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=1000" alt="Seed Selection">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">01</span>
+                        <span class="eyebrow">Stage One</span>
+                        <h2>The Seed Selection</h2>
+                        <p>Our cycle begins with seed collection from ancestral wild-growing Camellia sinensis assamica bushes at the estate boundaries. Seeds are hand-inspected for weight and integrity — only the most resilient carry forward the heritage lineage of Borokai to the next generation of bushes.</p>
+                    </div>
+                </div>
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=1000" alt="Nursery">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">02</span>
+                        <span class="eyebrow">Stage Two</span>
+                        <h2>The Nursery Phase</h2>
+                        <p>Sown in richly composted organic beds, the delicate seedlings spend 12 to 18 months inside shaded bamboo shelters. Master horticulturists monitor moisture levels daily, shielding young roots from the fierce tropical wind and teaching each plant to be resilient before it ever touches open ground.</p>
+                    </div>
+                </div>
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&q=80&w=1000" alt="Field Transplanting">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">03</span>
+                        <span class="eyebrow">Stage Three</span>
+                        <h2>Field Transplanting</h2>
+                        <p>Strong saplings are hand-transplanted into Borokai's alluvial terraces, positioned to catch natural hillside runoff and benefit from the shade canopy of ancient forest trees. No irrigation systems, no fertilizer lines — just rain, soil, and the accumulated wisdom of generations.</p>
+                    </div>
+                </div>
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=1000" alt="Fine Hand Plucking">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">04</span>
+                        <span class="eyebrow">Stage Four</span>
+                        <h2>Fine Hand Plucking</h2>
+                        <p>At first light, when the morning mist still clings to the garden, our master pluckers move through the rows selecting only the classic two leaves and a bud. This is learned knowledge — the fingers know which shoot is ready, which must be left. Harvesting is an act of listening.</p>
+                    </div>
+                </div>
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=80&w=1000" alt="Ambient Withering">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">05</span>
+                        <span class="eyebrow">Stage Five</span>
+                        <h2>Ambient Withering</h2>
+                        <p>Harvested leaves are spread immediately onto elevated bamboo shelves, exposed to slow cross-breezes rather than industrial fans. Over 16 to 20 hours, moisture reduces by 60% — naturally. This extended withering preserves the delicate aromatic compounds that define Borokai's character.</p>
+                    </div>
+                </div>
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=1000" alt="Gentle Rolling">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">06</span>
+                        <span class="eyebrow">Stage Six</span>
+                        <h2>Gentle Rolling</h2>
+                        <p>Using low-pressure brass rollers, the limp, withered leaves are gently twisted. This controlled bruising ruptures the leaf's cell membranes, releasing the natural juices and essential oils that coat the exterior — beginning the chain of chemistry that will eventually give the tea its body, colour, and malt.</p>
+                    </div>
+                </div>
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=1000" alt="Natural Oxidation">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">07</span>
+                        <span class="eyebrow">Stage Seven</span>
+                        <h2>Natural Oxidation</h2>
+                        <p>The rolled leaves rest on cool stone tables in humidity-controlled rooms, absorbing oxygen slowly. As oxidation progresses, they turn from green to copper — and the Assam signature builds: bold, baked-malt, and the distinctive golden tips that define an authentic estate-quality leaf.</p>
+                    </div>
+                </div>
+
+                <div class="split-row">
+                    <div class="split-image">
+                        <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&q=80&w=1000" alt="Packaging">
+                    </div>
+                    <div class="split-text">
+                        <span class="process-step-number">08</span>
+                        <span class="eyebrow">Stage Eight</span>
+                        <h2>Wax-Sealed Packaging</h2>
+                        <p>At the precise moment of full oxidation, the leaves are gently fired at low temperature to halt the process. They are hand-sorted by leaf grade, vacuum-packed into lined tin canisters, and each one is stamped with the Borokai hot wax seal — certifying the harvest lot, flush date, and plot number.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div><!-- end #process -->
+
+    <!-- ===================== PAGE: COLLECTIONS ===================== -->
+    <div id="products" class="page">
+
+        <div class="page-intro container">
+            <span class="eyebrow">Reserve Allocations</span>
+            <h2>The Single Estate Collections</h2>
+            <p>Three expressions of one garden. Each limited by season, defined by terroir, and sealed with an estate certificate of authenticity.</p>
+        </div>
+
+        <section class="container" style="padding-bottom: 9rem;">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&q=80&w=800" alt="Borokai CTC Cut Tear Curl Tea">
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-meta">Classic Robust Blend · Estate Fresh</span>
+                        <h3>CTC Cut Tear Curl Tea</h3>
+                        <p>Our CTC (Cut, Tear, Curl) tea is exceptionally bold, strong, and highly malty. Crafted for the ultimate traditional milk chai, it delivers a rich coppery infusion with invigorating depth.</p>
+                        <span class="product-price">From ₹650 · 250g Canister</span>
+                        <a href="#" onclick="navigateTo('free-sample')" class="btn-outline">Request Sample</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=800" alt="Assamese Tea - First Flush">
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-meta">Spring Harvest · Elegant & Light</span>
+                        <h3>Assamese Tea - First Flush</h3>
+                        <p>Harvested at the peak of spring. Offers light, tender leaves yielding a delicate golden cup with exquisite honeyed, floral, and grassy notes.</p>
+                        <span class="product-price">From ₹1,500 · 100g Canister</span>
+                        <a href="#" onclick="navigateTo('free-sample')" class="btn-outline">Request Sample</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=800" alt="Assamese Tea - Second Flush">
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-meta">Summer Flush · Famous Malty Character</span>
+                        <h3>Assamese Tea - Second Flush</h3>
+                        <p>The iconic Assam tea. Full-bodied, rich, and naturally sweet with a prominent baked-malt profile, high concentration of golden tips, and legendary depth.</p>
+                        <span class="product-price">From ₹1,200 · 150g Canister</span>
+                        <a href="#" onclick="navigateTo('free-sample')" class="btn-outline">Request Sample</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div><!-- end #products -->
+
+    <!-- ===================== PAGE: GALLERY ===================== -->
+    <div id="gallery" class="page">
+
+        <div class="page-intro container">
+            <span class="eyebrow">The Estate in Frames</span>
+            <h2>Visual Vignettes of Stillness</h2>
+            <p>A journey through the garden, the morning harvest, and the quiet craft of Borokai.</p>
+        </div>
+
+        <section class="container" style="padding-bottom: 9rem;">
+            <div class="gallery-grid">
+                <div class="gallery-item gi-1">
+                    <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&q=80&w=1200" alt="Borokai Estate Mist">
+                </div>
+                <div class="gallery-item gi-2">
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600" alt="Artisan Tea Rolling">
+                </div>
+                <div class="gallery-item gi-3">
+                    <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&q=80&w=800" alt="Tea Garden Harvest">
+                </div>
+                <div class="gallery-item gi-4">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=600" alt="Dried Tea Leaves">
+                </div>
+                <div class="gallery-item gi-5">
+                    <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&q=80&w=800" alt="Tea Pouring Ritual">
+                </div>
+                <div class="gallery-item gi-6">
+                    <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=600" alt="Tea Meditation">
+                </div>
+                <div class="gallery-item gi-7">
+                    <img src="https://images.unsplash.com/photo-1505275350441-83dcda8eeef5?auto=format&fit=crop&q=80&w=400" alt="Assam Tea Landscape">
+                </div>
+                <div class="gallery-item gi-8">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.30.48.jpeg" alt="Borokai Estate Harvest 1">
+                </div>
+                <div class="gallery-item gi-9">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.31.27.jpeg" alt="Borokai Estate Harvest 2">
+                </div>
+                <div class="gallery-item gi-10">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.32.04.jpeg" alt="Borokai Estate Harvest 3">
+                </div>
+                <div class="gallery-item gi-11">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.32.39.jpeg" alt="Borokai Estate Harvest 4">
+                </div>
+                <div class="gallery-item gi-12">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.32.56.jpeg" alt="Borokai Estate Harvest 5">
+                </div>
+                <div class="gallery-item gi-13">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.33.27.jpeg" alt="Borokai Estate Harvest 6">
+                </div>
+                <div class="gallery-item gi-14">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.33.44.jpeg" alt="Borokai Estate Harvest 7">
+                </div>
+                <div class="gallery-item gi-15">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.34.18.jpeg" alt="Borokai Estate Harvest 8">
+                </div>
+                <div class="gallery-item gi-16">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.35.38.jpeg" alt="Borokai Estate Harvest 9">
+                </div>
+                <div class="gallery-item gi-17">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2008.36.11.jpeg" alt="Borokai Estate Harvest 10">
+                </div>
+                <div class="gallery-item gi-18">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.13.jpeg" alt="Borokai Estate Harvest 11">
+                </div>
+                <div class="gallery-item gi-19">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.14.jpeg" alt="Borokai Estate Harvest 12">
+                </div>
+                <div class="gallery-item gi-20">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.14%20%281%29.jpeg" alt="Borokai Estate Harvest 13">
+                </div>
+                <div class="gallery-item gi-21">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.15.jpeg" alt="Borokai Estate Harvest 14">
+                </div>
+                <div class="gallery-item gi-22">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.16.jpeg" alt="Borokai Estate Harvest 15">
+                </div>
+                <div class="gallery-item gi-23">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.16%20%281%29.jpeg" alt="Borokai Estate Harvest 16">
+                </div>
+                <div class="gallery-item gi-24">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.17.jpeg" alt="Borokai Estate Harvest 17">
+                </div>
+                <div class="gallery-item gi-25">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.17%20%281%29.jpeg" alt="Borokai Estate Harvest 18">
+                </div>
+                <div class="gallery-item gi-26">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.17%20%282%29.jpeg" alt="Borokai Estate Harvest 19">
+                </div>
+                <div class="gallery-item gi-27">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.18.jpeg" alt="Borokai Estate Harvest 20">
+                </div>
+                <div class="gallery-item gi-28">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.18%20%281%29.jpeg" alt="Borokai Estate Harvest 21">
+                </div>
+                <div class="gallery-item gi-29">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.18%20%282%29.jpeg" alt="Borokai Estate Harvest 22">
+                </div>
+                <div class="gallery-item gi-30">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.19.jpeg" alt="Borokai Estate Harvest 23">
+                </div>
+                <div class="gallery-item gi-31">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.19%20%281%29.jpeg" alt="Borokai Estate Harvest 24">
+                </div>
+                <div class="gallery-item gi-32">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.19%20%282%29.jpeg" alt="Borokai Estate Harvest 25">
+                </div>
+                <div class="gallery-item gi-33">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.19%20%283%29.jpeg" alt="Borokai Estate Harvest 26">
+                </div>
+                <div class="gallery-item gi-34">
+                    <img src="WhatsApp%20Image%202026-05-30%20at%2010.06.20.jpeg" alt="Borokai Estate Harvest 27">
+                </div>
+            </div>
+        </section>
+    </div><!-- end #gallery -->
+
+    <!-- ===================== PAGE: TEAM ===================== -->
+    <div id="team" class="page">
+        <div class="page-intro container">
+            <span class="eyebrow">The Custodians</span>
+            <h2>Our Team</h2>
+            <p>The people behind Borokai bring together generations of estate knowledge, global expertise, and a shared reverence for natural purity.</p>
+        </div>
+
+        <section class="container" style="padding-bottom: 9rem;">
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" alt="Shubhank Singla">
+                    </div>
+                    <h3>Shubhank Singla</h3>
+                    <span class="team-role">Director of Operations</span>
+                    <p>Shubhank orchestrates the full lifecycle of every Borokai harvest, from field to sealed canister, with uncompromising precision and care.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=400" alt="Aditya Verma">
+                    </div>
+                    <h3>Aditya Verma</h3>
+                    <span class="team-role">Chief Agronomist</span>
+                    <p>Aditya is the guardian of Borokai's soil culture — implementing biological composting and forest-cycle practices that uphold our 0% chemical pledge.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" alt="Vanya Verma">
+                    </div>
+                    <h3>Vanya Verma</h3>
+                    <span class="team-role">Client Concierge</span>
+                    <p>Vanya oversees international correspondence and private estate experiences, ensuring every client interaction embodies the grace of Borokai.</p>
+                </div>
+            </div>
+        </section>
+    </div><!-- end #team -->
+
+    <!-- ===================== PAGE: FAQs ===================== -->
+    <div id="faq" class="page">
+
+        <div class="page-intro container">
+            <span class="eyebrow">Estate Intelligence</span>
+            <h2>Frequently Answered Inquiries</h2>
+            <p>Everything you need to know about the leaf, the land, and the ritual.</p>
+        </div>
+
+        <section class="container" style="padding-bottom: 9rem;">
+            <div class="faq-categories">
+
+                <div style="margin-bottom: 4rem;">
+                    <h3 class="faq-cat-title">The Leaf &amp; Sourcing</h3>
+
+                    <div class="accordion-item">
+                        <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>What makes single-estate tea superior to blended teas?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Most commercial tea is blended from hundreds of estates to achieve an average, uniform profile. Borokai is strictly single-estate — every gram you brew comes from one plot of earth in Dwarbond. You taste the actual terroir: the specific minerals in the soil, the mist patterns, the altitude, the season. No averaging. No compromise.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>What defines your 0% chemical certification?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>No synthetic pesticide, herbicide, or chemical fertilizer has touched Borokai soil in over a century. We rely entirely on biological inheritance — native forest bio-fertility, complex crop rotation, hand-weeding, and the natural ecosystem of wildlife that enriches our soil without any human-made intervention.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>What is the difference between First Flush and Second Flush Assam?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Our First Flush is the earliest spring harvest — the leaves are tender, the liquor is lighter with honeyed and floral notes. The Second Flush, harvested early summer, is the classic Assam expression: full-bodied, bold, and deeply malty with the famous coppery colour and golden tips.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 4rem;">
+                    <h3 class="faq-cat-title">Client Logistics</h3>
+
+                    <div class="accordion-item">
+                        <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>Do you ship internationally?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Yes. Borokai ships to private clients, sommeliers, and luxury retailers globally via temperature-controlled air freight. All shipments are fully tracked and accompanied by custom clearance documentation, origin certificates, and estate wax seal authentication.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>How do I verify the authenticity of my Borokai canister?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Every canister carries a hot wax estate seal stamped with the harvest date, plot location within Dwarbond, and an individual batch serial number. We also provide a printed provenance certificate inside each order from our private client allocations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="faq-cat-title">The Infusion Ritual</h3>
+
+                    <div class="accordion-item">
+                        <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>What is the ideal brewing method for Borokai teas?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Use freshly drawn filtered water heated to 95°C (203°F). Measure 2 grams per 200ml cup. Steep 3–4 minutes for a balanced brew, up to 5 minutes for a bolder, malty expression perfect with a dash of milk. We recommend brewing in a warmed, ceramic or glass vessel to allow the leaves to open fully.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <span>How should I store Borokai tea once opened?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Store in the sealed tin canister away from direct light, moisture, and strong odors. Our vacuum-sealed packaging maintains freshness for 18–24 months unopened. Once opened, consume within 6 months for peak character — though it rarely lasts that long.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div><!-- end #faq -->
+
+    <!-- ===================== PAGE: FREE SAMPLE ===================== -->
+    <div id="free-sample" class="page">
+
+        <div class="page-intro container">
+            <span class="eyebrow">Curated Experience</span>
+            <h2>Request a Private Allocation</h2>
+            <p>Due to our deliberately limited harvests, tasting allocations are reviewed individually and fulfilled by our concierge team.</p>
+        </div>
+
+        <section class="container" style="padding-bottom: 9rem;">
+            <div class="contact-wrapper">
+                <div class="contact-details">
+                    <h3 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 1rem;">The Tasting Programme</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: 3rem; line-height: 1.8; font-size: 0.92rem;">We invite tea connoisseurs, hoteliers, restaurateurs, and collectors to request a complimentary 15g reserve tin. Each tasting allocation arrives with estate-certified brewing notes and provenance documentation.</p>
+
+                    <div class="info-block">
+                        <span>Tasting Package Includes</span>
+                        <p>15g Reserve Tin · Brewing Notes<br>Estate Provenance Card</p>
+                    </div>
+                    <div class="info-block">
+                        <span>Processing Time</span>
+                        <p>3 to 5 business days</p>
+                    </div>
+                    <div class="info-block">
+                        <span>Allocation Limit</span>
+                        <p>One per address per season</p>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="luxury-form" onsubmit="event.preventDefault(); document.getElementById('sample-success').style.display='block'; this.reset();">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Desired Vintage</label>
+                            <select required>
+                                <option value="" disabled selected>Choose your tea…</option>
+                                <option value="ctc-tea">Borokai CTC Cut Tear Curl Tea</option>
+                                <option value="first-flush">Assamese Tea - First Flush</option>
+                                <option value="second-flush">Assamese Tea - Second Flush</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Shipping Address</label>
+                            <textarea rows="3" required placeholder="Full address including country and postal code"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Tea Background</label>
+                            <input type="text" placeholder="e.g. collector, sommelier, hotel buyer, enthusiast…">
+                        </div>
+                        <button type="submit" class="btn-submit">Request Tasting Allocation</button>
+                    </form>
+
+                    <div id="sample-success" style="display:none; margin-top: 2.5rem; padding: 2rem; background: rgba(13,31,20,0.02); border-left: 2px solid var(--color-accent);">
+                        <h4 style="font-family: var(--font-serif); color: var(--color-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Allocation Registered</h4>
+                        <p style="color: var(--color-text-muted); font-size: 0.88rem; line-height: 1.8;">Thank you. Your tasting allocation request has been received. Our concierge will review availability and respond within two business days.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div><!-- end #free-sample -->
+
+    <!-- ===================== PAGE: CONTACT ===================== -->
+    <div id="contact" class="page">
+
+        <div class="page-intro container">
+            <span class="eyebrow">Inquiries &amp; Private Reserves</span>
+            <h2>Contact the Estate</h2>
+            <p>Whether you are an international sommelier, a boutique retailer, or a private client — our concierge handles all correspondence personally.</p>
+        </div>
+
+        <section class="container" style="padding-bottom: 9rem;">
+            <div class="contact-wrapper">
+                <div class="contact-details">
+                    <h3>The Estate Concierge</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: 3rem; line-height: 1.8; font-size: 0.92rem;">All inquiries are read personally by our team and responded to within one business day. We do not use automated systems for private client communications.</p>
+
+                    <div class="info-block">
+                        <span>The Estate Grounds</span>
+                        <p>Borokai Tea Estate<br>Dwarbond, Assam 788113<br>India</p>
+                    </div>
+                    <div class="info-block">
+                        <span>Direct Line</span>
+                        <p>+91 98343 08218</p>
+                    </div>
+                    <div class="info-block">
+                        <span>Electronic Mail</span>
+                        <p><a href="mailto:BorokaiSince1860@gmail.com" class="footer-email-link" style="color: inherit;">BorokaiSince1860@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="luxury-form" onsubmit="event.preventDefault(); alert('Thank you. A Borokai concierge will respond within one business day.');">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nature of Inquiry</label>
+                            <input type="text" placeholder="Private Reserve / Distribution / General">
+                        </div>
+                        <div class="form-group">
+                            <label>Your Message</label>
+                            <textarea rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Initiate Correspondence</button>
+                    </form>
+
+                    <!-- FAQ Accordion -->
+                    <div style="margin-top: 5rem; border-top: 1px solid rgba(13,31,20,0.06); padding-top: 4rem;">
+                        <h3 style="font-size: 1.8rem; color: var(--color-primary); margin-bottom: 2rem;">Client Support</h3>
+
+                        <div class="accordion-item">
+                            <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>Do you ship single-origin vintages globally?</span>
+                                <span class="accordion-icon">+</span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Yes. Borokai is fully custom-cleared and export-certified. We fulfil global private client requests via insulated priority air freight.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-trigger" onclick="toggleAccordion(this)">
+                                <span>What is your minimum order for wholesale?</span>
+                                <span class="accordion-icon">+</span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Wholesale allocations begin at 5kg per flush. Given our limited yields, we strongly recommend registering your interest at the beginning of the harvest season (March for First Flush, June for Second Flush).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div><!-- end #contact -->
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                        <svg class="logo-leaf" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" width="28" height="28" style="flex-shrink: 0;">
+                            <path d="M2 22C2 22 8 20 12 16C16 12 22 2 22 2C22 2 12 8 8 12C4 16 2 22 2 22Z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 22L14 10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="footer-brand-name" style="margin-bottom: 0;">Borokai</span>
+                    </div>
+                    <p>Authentic, unhurried single-origin organic teas crafted to the standards of ancestral quiet luxury. Hand-selected in Dwarbond, Assam, since 1860.</p>
+                    <div class="social-icons" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.12); border-radius: 50%; color: rgba(255,255,255,0.6); transition: var(--transition-fast);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.12); border-radius: 50%; color: rgba(255,255,255,0.6); transition: var(--transition-fast);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.12); border-radius: 50%; color: rgba(255,255,255,0.6); transition: var(--transition-fast);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.5v-2.87H10V9.82c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.2.19 2.2.19v2.42h-1.24c-1.23 0-1.62.76-1.62 1.54v1.85h2.72l-.44 2.87h-2.28V21.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+                        </a>
+                        <a href="https://wa.me/919834308218" target="_blank" aria-label="WhatsApp" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.12); border-radius: 50%; color: rgba(255,255,255,0.6); transition: var(--transition-fast);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.517 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.403.002 9.803-4.394 9.805-9.805.001-2.621-1.02-5.086-2.877-6.944-1.856-1.857-4.324-2.879-6.94-2.88-5.41 0-9.81 4.403-9.813 9.814-.001 1.548.411 3.055 1.195 4.397L1.5 20.353l4.63-1.218c1.208.76 2.457 1.18 3.754 1.182h.003zm9.73-4.992c-.263-.13-1.554-.767-1.794-.853-.24-.087-.414-.13-.588.13-.174.26-.673.853-.826 1.026-.153.173-.305.195-.568.064-.263-.13-1.11-.409-2.113-1.305-.78-.696-1.307-1.557-1.46-1.817-.153-.26-.016-.4.115-.53.119-.117.263-.304.394-.455.131-.152.174-.26.262-.433.087-.173.044-.325-.022-.455-.065-.13-.588-1.417-.805-1.942-.211-.51-.427-.44-.588-.448-.15-.007-.323-.008-.497-.008-.174 0-.458.065-.697.325-.24.26-.915.894-.915 2.178 0 1.284.937 2.522 1.067 2.696.13.174 1.844 2.815 4.467 3.951.624.27 1.11.431 1.488.551.626.2 1.197.172 1.648.105.503-.075 1.554-.634 1.774-1.246.22-.613.22-1.138.153-1.247-.067-.108-.24-.173-.503-.303z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h5>Navigate</h5>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+                        <li><a href="#" onclick="navigateTo('about')">About Us</a></li>
+                        <li><a href="#" onclick="navigateTo('history')">Our History</a></li>
+                        <li><a href="#" onclick="navigateTo('process')">The Craft</a></li>
+                        <li><a href="#" onclick="navigateTo('gallery')">Gallery</a></li>
+                        <li><a href="#" onclick="navigateTo('team')">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h5>Assistance</h5>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('products')">Collections</a></li>
+                        <li><a href="#" onclick="navigateTo('free-sample')">Free Sample</a></li>
+                        <li><a href="#" onclick="navigateTo('faq')">FAQs</a></li>
+                        <li><a href="#" onclick="navigateTo('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h5>The Estate</h5>
+                    <p style="font-size: 0.8rem; line-height: 1.8;">
+                        Borokai Tea Estate<br>
+                        Dwarbond, Assam<br>
+                        PIN 788113 · India<br><br>
+                        +91 98343 08218<br>
+                        <a href="mailto:BorokaiSince1860@gmail.com" class="footer-email-link">BorokaiSince1860@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Borokai Tea Estate. All Rights Reserved.</p>
+                <div class="footer-seal">
+                    <span>◈</span>
+                    <span>Pure Single Estate Assam · Slow Handcrafted · Est. 1860</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <script>
+        // ——— SPA Router ———
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('active');
+                if (l.getAttribute('onclick') && l.getAttribute('onclick').includes(pageId)) {
+                    l.classList.add('active');
+                }
+            });
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // ——— Accordion ———
+        function toggleAccordion(el) {
+            const content = el.nextElementSibling;
+            const icon = el.querySelector('.accordion-icon');
+            const isOpen = content.style.display === 'block';
+
+            // Close all
+            document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.accordion-icon').forEach(i => i.textContent = '+');
+
+            if (!isOpen) {
+                content.style.display = 'block';
+                icon.textContent = '−';
+            }
+        }
+
+        // ——— Hero Slideshow ———
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length > 0) {
+            setInterval(() => {
+                slides[slideIndex].classList.remove('active');
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].classList.add('active');
+            }, 5500);
+        }
+
+        // ——— Reviews Carousel ———
+        let reviewIdx = 0;
+        const reviewSlides = document.querySelectorAll('.review-slide');
+        const reviewDots = document.querySelectorAll('.review-dot');
+
+        function showReview(index) {
+            reviewSlides.forEach((s, i) => {
+                s.classList.remove('active');
+                if (reviewDots[i]) reviewDots[i].classList.remove('active');
+            });
+            reviewIdx = ((index % reviewSlides.length) + reviewSlides.length) % reviewSlides.length;
+            reviewSlides[reviewIdx].classList.add('active');
+            if (reviewDots[reviewIdx]) reviewDots[reviewIdx].classList.add('active');
+        }
+
+        function currentReview(i) { showReview(i); resetReviewTimer(); }
+
+        let reviewTimer = setInterval(() => showReview(reviewIdx + 1), 6500);
+
+        function resetReviewTimer() {
+            clearInterval(reviewTimer);
+            reviewTimer = setInterval(() => showReview(reviewIdx + 1), 6500);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const prev = document.querySelector('.prev-btn');
+            const next = document.querySelector('.next-btn');
+            if (prev) prev.addEventListener('click', () => { showReview(reviewIdx - 1); resetReviewTimer(); });
+            if (next) next.addEventListener('click', () => { showReview(reviewIdx + 1); resetReviewTimer(); });
+        });
+
+        // ——— Subtle header shadow on scroll ———
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.style.boxShadow = '0 4px 30px rgba(13, 31, 20, 0.06)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
